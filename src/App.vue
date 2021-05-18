@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <muddy-radio-group v-model="list" @change="handleChange">
+    <muddy-radio-group v-model="list">
       <muddy-radio-button label="1">
         1
       </muddy-radio-button>
@@ -25,8 +24,8 @@
 </template>
 
 <script>
-import muddyRadioButtonVue from "./components/muddyRadioButton.vue";
-import muddyRadioGroupVue from "./components/muddyRadioGroup.vue";
+import muddyRadioButtonVue from "./package/radio/src/muddyRadioButton.vue";
+import muddyRadioGroupVue from "./package/radio/src/muddyRadioGroup.vue";
 
 export default {
   name: "App",
@@ -51,7 +50,7 @@ export default {
 <style>
 #app {
   width: 50%;
-  margin: 0 auto;
+  margin: 20vh auto;
 }
 .hand {
   cursor: pointer;

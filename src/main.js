@@ -3,6 +3,7 @@ import App from "./App.vue";
 import "muddy-rain-sass";
 Vue.config.productionTip = false;
 
+
 new Vue({
   render: h => h(App),
 }).$mount("#app");
