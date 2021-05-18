@@ -1,25 +1,37 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <muddy-radio-group v-model="list">
-      <muddy-radio label="1">
-        男
-      </muddy-radio>
-      <muddy-radio label="2">
-        女
-      </muddy-radio>
+    <muddy-radio-group v-model="list" @change="handleChange">
+      <muddy-radio-button label="1">
+        1
+      </muddy-radio-button>
+      <div class="a">
+        <muddy-radio-button label="2">
+          2
+        </muddy-radio-button>
+      </div>
+      <div class="a">
+        <muddy-radio-button label="3">
+          3
+        </muddy-radio-button>
+      </div>
+      <div class="a">
+        <muddy-radio-button label="4">
+          4
+        </muddy-radio-button>
+      </div>
     </muddy-radio-group>
   </div>
 </template>
 
 <script>
-import muddyRadioVue from "./components/muddyRadio.vue";
+import muddyRadioButtonVue from "./components/muddyRadioButton.vue";
 import muddyRadioGroupVue from "./components/muddyRadioGroup.vue";
 
 export default {
   name: "App",
   components: {
-    muddyRadio: muddyRadioVue,
+    muddyRadioButton: muddyRadioButtonVue,
     muddyRadioGroup: muddyRadioGroupVue,
   },
   data() {
@@ -37,6 +49,10 @@ export default {
 </script>
 
 <style>
+#app {
+  width: 50%;
+  margin: 0 auto;
+}
 .hand {
   cursor: pointer;
 }
