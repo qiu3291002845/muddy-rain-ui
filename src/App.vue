@@ -37,6 +37,7 @@ export default {
     return {
       sex: "2",
       list: "",
+      size: "mini",
     };
   },
   methods: {

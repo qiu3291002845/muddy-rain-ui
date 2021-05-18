@@ -10,7 +10,7 @@
         :class="{ 'muddy-radio-input-disabled': disabled }"
         @change="handleChange"
       />
-      <div class="muddy-radio-text" :class="className">
+      <div class="muddy-radio-text" :class="[className, sizeName]">
         <slot />
         <template v-if="!$slots.default">{{ label }}</template>
       </div>
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       className: "",
+      sizeName: "",
     };
   },
   computed: {
@@ -93,6 +94,15 @@ export default {
   text-align: center;
   -webkit-transition: all 250ms ease;
   transition: all 250ms ease;
+}
+.muddy-radio-text.medium {
+  padding: 10px 20px;
+}
+.muddy-radio-text.small {
+  padding: 9px 15px;
+}
+.muddy-radio-text.mini {
+  padding: 7px 15px;
 }
 input[type="radio"]:checked + .muddy-radio-text {
   color: #fff;

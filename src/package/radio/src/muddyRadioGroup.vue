@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  props: { value: null },
+  props: {
+    value: null,
+    size: {
+      type: String,
+      default: "medium",
+    },
+  },
   componentName: "MuddyRadioGroup",
   computed: {
     innerVal: {
@@ -29,6 +35,7 @@ export default {
         if (item.$options.componentName !== name) {
           this.findComponent(item.$children, name);
         } else {
+          item.sizeName = this.size;
           return item;
         }
       });
