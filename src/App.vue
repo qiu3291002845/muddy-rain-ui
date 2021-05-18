@@ -1,19 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <muddy-radio v-model="sex" label="1">男</muddy-radio>
+    <muddy-radio v-model="sex" label="2">女</muddy-radio>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import muddyRadioVue from "./components/muddyRadio.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    muddyRadio: muddyRadioVue,
+  },
+  data() {
+    return {
+      sex: "",
+    };
+  },
+};
 </script>
 
 <style>

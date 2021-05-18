@@ -1,4 +1,5 @@
 # muddy-rain-ui
+<<<<<<< HEAD
 
 ## Project setup
 ```
@@ -22,3 +23,6 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+—— Vue UI component library developed by Muddyrain
+>>>>>>> 41410885c2ab5e696e7e7f524f849c757e01fabf
