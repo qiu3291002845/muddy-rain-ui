@@ -6,8 +6,11 @@
 
 <script>
 export default {
+  name: "MuddyRadioGroup",
   props: {
-    value: null,
+    value: {
+      type: null,
+    },
     size: {
       type: String,
       default: "medium",
@@ -27,6 +30,9 @@ export default {
   },
   mounted() {
     this.findComponent(this.$children, "MuddyRadioButton");
+    if (this.value === undefined) {
+      throw "The `MuddyRadioGroup` component must be bound to value properties or `v-model` properties";
+    }
   },
   methods: {
     findComponent(list, name) {
@@ -40,8 +46,8 @@ export default {
         }
       });
       const length = children.length;
-      children[0].className = "first";
-      children[length - 1].className = "last";
+      children[0] ? (children[0].className = "first") : null;
+      children[length - 1] ? (children[length - 1].className = "last") : null;
     },
   },
 };

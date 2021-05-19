@@ -1,37 +1,32 @@
 <template>
   <div id="app">
+    <div class="py-2 text-weight">单选按钮组</div>
     <muddy-radio-group v-model="list">
-      <muddy-radio-button label="1">
-        1
-      </muddy-radio-button>
-      <div class="a">
-        <muddy-radio-button label="2">
-          2
-        </muddy-radio-button>
-      </div>
-      <div class="a">
-        <muddy-radio-button label="3">
-          3
-        </muddy-radio-button>
-      </div>
-      <div class="a">
-        <muddy-radio-button label="4">
-          4
-        </muddy-radio-button>
-      </div>
+      <muddy-radio-button :label="1"></muddy-radio-button>
+      <muddy-radio-button :label="2"></muddy-radio-button>
     </muddy-radio-group>
+    <div class="py-2 text-weight">单选组</div>
+    <muddy-radio-group v-model="list">
+      <muddy-radio :label="1"></muddy-radio>
+      <muddy-radio :label="2"></muddy-radio>
+    </muddy-radio-group>
+    <muddy-checkbox></muddy-checkbox>
   </div>
 </template>
 
 <script>
-import muddyRadioButtonVue from "./package/radio/src/muddyRadioButton.vue";
-import muddyRadioGroupVue from "./package/radio/src/muddyRadioGroup.vue";
+import muddyCheckbox from "./package/checkbox/src/muddyCheckbox.vue";
+import muddyRadioButton from "./package/radio/src/muddyRadioButton.vue";
+import muddyRadio from "./package/radio/src/muddyRadio.vue";
+import muddyRadioGroup from "./package/radio/src/muddyRadioGroup.vue";
 
 export default {
   name: "App",
   components: {
-    muddyRadioButton: muddyRadioButtonVue,
-    muddyRadioGroup: muddyRadioGroupVue,
+    muddyCheckbox,
+    muddyRadioButton,
+    muddyRadioGroup,
+    muddyRadio,
   },
   data() {
     return {

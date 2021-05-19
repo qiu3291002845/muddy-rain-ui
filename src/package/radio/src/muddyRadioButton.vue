@@ -19,8 +19,17 @@
 </template>
 <script>
 export default {
+  name: "MuddyRadioButton",
   componentName: "MuddyRadioButton",
-  props: { value: null, name: null, label: null, disabled: Boolean },
+  props: {
+    value: null,
+    name: null,
+    label: {
+      type: null,
+      required: true,
+    },
+    disabled: Boolean,
+  },
   data() {
     return {
       className: "",
@@ -33,6 +42,7 @@ export default {
       while (parent) {
         if (parent.$options.componentName !== "MuddyRadioGroup") {
           parent = parent.$parent;
+          throw "This `MuddyRadioButton` component must be included in the `MuddyRadioGroup` radio group ";
         } else {
           // eslint-disable-next-line vue/no-side-effects-in-computed-properties
           this._radioGroup = parent;
@@ -61,7 +71,7 @@ export default {
   },
 };
 </script>
-<style scopd>
+<style scoped>
 .muddy-radio {
   cursor: pointer;
 }

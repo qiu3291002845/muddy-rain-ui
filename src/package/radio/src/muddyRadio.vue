@@ -10,7 +10,7 @@
         :class="{ 'muddy-radio-input-disabled': disabled }"
         @change="handleChange"
       />
-      <div class="px-2 muddy-radio-text">
+      <div class="muddy-radio-text">
         <slot />
         <template v-if="!$slots.default">{{ label }}</template>
       </div>
@@ -19,6 +19,7 @@
 </template>
 <script>
 export default {
+  name: "MuddyRadio",
   componentName: "MuddyRadio",
   props: { value: null, name: null, label: null, disabled: Boolean },
   computed: {
@@ -53,24 +54,24 @@ export default {
       this.$emit("change", event);
     },
   },
-  mounted() {
-    console.log();
-  },
 };
 </script>
-<style scopd>
+<style scoped>
 .muddy-radio {
   cursor: pointer;
 }
 .muddy-radio .muddy-radio-input {
   vertical-align: text-bottom;
   opacity: 0;
+  position: absolute;
+  left: 0;
 }
 .muddy-radio-text {
   box-sizing: border-box;
   font-size: 1.2rem;
   display: flex;
   align-items: center;
+  padding-right: 0.75rem;
 }
 .muddy-radio-text::before {
   content: "";
