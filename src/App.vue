@@ -10,7 +10,7 @@
       <muddy-radio :label="1"></muddy-radio>
       <muddy-radio :label="2"></muddy-radio>
     </muddy-radio-group>
-    <muddy-checkbox></muddy-checkbox>
+    <muddy-checkbox v-model="checkbox"></muddy-checkbox>
   </div>
 </template>
 
@@ -33,6 +33,7 @@ export default {
       sex: "2",
       list: "",
       size: "mini",
+      checkbox: "",
     };
   },
   methods: {
