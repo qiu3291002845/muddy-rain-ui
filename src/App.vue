@@ -14,9 +14,22 @@
     <muddy-radio :label="1"></muddy-radio>
     <muddy-radio :label="2"></muddy-radio>
     <div class="py-2 text-weight">复选框</div>
+    <muddy-checkbox :label="1" v-model="checkbox">踢足球</muddy-checkbox>
+    <muddy-checkbox :label="2" v-model="checkbox1">打羽毛球</muddy-checkbox>
+    <div class="py-2 text-weight">复选框组</div>
     <muddy-checkbox-group v-model="checkboxList">
-      <muddy-checkbox :label="1" v-model="checkbox">踢足球</muddy-checkbox>
-      <muddy-checkbox :label="2" v-model="checkbox1">打羽毛球</muddy-checkbox>
+      <muddy-checkbox label="踢足球">踢足球</muddy-checkbox>
+      <muddy-checkbox label="打羽毛球">打羽毛球</muddy-checkbox>
+      <muddy-checkbox label="打乒乓球">打乒乓球</muddy-checkbox>
+      <muddy-checkbox label="打篮球">打篮球</muddy-checkbox>
+    </muddy-checkbox-group>
+    <div class="py-2 text-weight">复选框按钮组</div>
+    <muddy-checkbox-group v-model="checkboxButtonList">
+      <muddy-checkbox-button label="踢足球">踢足球</muddy-checkbox-button>
+      <muddy-checkbox-button label="打羽毛球">
+        打羽毛球
+      </muddy-checkbox-button>
+      <muddy-checkbox-button label="打乒乓球">打乒乓球</muddy-checkbox-button>
     </muddy-checkbox-group>
   </div>
 </template>
@@ -24,6 +37,7 @@
 <script>
 import muddyCheckbox from "./package/checkbox/src/muddyCheckbox.vue";
 import muddyCheckboxGroup from "./package/checkbox/src/muddyCheckboxGroup.vue";
+import muddyCheckboxButton from "./package/checkbox/src/muddyCheckboxButton.vue";
 import muddyRadioButton from "./package/radio/src/muddyRadioButton.vue";
 import muddyRadio from "./package/radio/src/muddyRadio.vue";
 import muddyRadioGroup from "./package/radio/src/muddyRadioGroup.vue";
@@ -36,15 +50,17 @@ export default {
     muddyRadioGroup,
     muddyRadio,
     muddyCheckboxGroup,
+    muddyCheckboxButton,
   },
   data() {
     return {
       sex: "2",
       list: "",
       size: "mini",
-      checkbox: "",
-      checkbox1: "",
-      checkboxList: [],
+      checkbox: false,
+      checkbox1: true,
+      checkboxList: ["打乒乓球"],
+      checkboxButtonList: [],
     };
   },
   methods: {
@@ -58,7 +74,7 @@ export default {
 <style>
 #app {
   width: 50%;
-  margin: 20vh auto;
+  margin: 5vh auto;
 }
 .hand {
   cursor: pointer;

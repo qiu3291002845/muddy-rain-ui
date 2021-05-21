@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "MuddyRadioGroup",
+  componentName: "MuddyRadioGroup",
   props: {
     value: {
       type: null,
@@ -16,7 +17,6 @@ export default {
       default: "medium",
     },
   },
-  componentName: "MuddyRadioGroup",
   computed: {
     innerVal: {
       get() {

@@ -99,7 +99,6 @@ export default {
   display: inline-block;
   padding: 10px 20px;
   box-sizing: border-box;
-
   cursor: pointer;
   text-align: center;
   -webkit-transition: all 250ms ease;

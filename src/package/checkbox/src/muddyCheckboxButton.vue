@@ -18,7 +18,7 @@
         :disabled="disabled"
         @change="handleChange"
       />
-      <span class="muddy-checkbox-text">
+      <span class="muddy-checkbox-text" :class="[className, sizeName]">
         <slot />
         <template v-if="!$slots.default">{{ label }}</template>
       </span>
@@ -28,8 +28,8 @@
 
 <script>
 export default {
-  name: "MuddyCheckbox",
-  componentName: "MuddyCheckbox",
+  name: "MuddyCheckboxButton",
+  componentName: "MuddyCheckboxButton",
   props: {
     value: null,
     label: null,
@@ -40,6 +40,8 @@ export default {
       model: [],
       group: false,
       currentValue: this.value,
+      className: "",
+      sizeName: "",
     };
   },
   computed: {
@@ -93,56 +95,60 @@ export default {
 <style lang="scss" scoped>
 .muddy-checkbox {
   cursor: pointer;
-  margin-right: 0.5rem;
   .muddy-checkbox-text {
     display: flex;
     align-items: center;
   }
-
-  .muddy-checkbox-text::before {
-    content: "✔";
-    width: 1rem;
-    height: 1rem;
-    color: white;
-    background: white;
+  .muddy-checkbox-text.first {
+    border-radius: 4px 0 0 4px;
+    border-left: 1px solid #cccccc;
+  }
+  .muddy-checkbox-text.last {
+    border-radius: 0 4px 4px 0;
+  }
+  .muddy-checkbox-text {
+    box-sizing: border-box;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    background: #fefefe;
+    border: 1px solid #cccccc;
+    border-left: none;
     display: inline-block;
-    border: 1px solid #dcdfe6;
-    border-radius: 2px;
+    padding: 10px 20px;
     box-sizing: border-box;
     cursor: pointer;
-    position: relative;
-    margin-right: 0.75rem;
-    transition: all 250ms ease;
-    font-size: 0.85rem;
     text-align: center;
-    line-height: 1rem;
+    -webkit-transition: all 250ms ease;
+    transition: all 250ms ease;
+  }
+  .muddy-checkbox-text.medium {
+    padding: 10px 20px;
+  }
+  .muddy-checkbox-text.small {
+    padding: 9px 15px;
+  }
+  .muddy-checkbox-text.mini {
+    padding: 7px 15px;
   }
   input[type="checkbox"] {
     position: absolute;
     left: 0;
     opacity: 0;
   }
-  input[type="checkbox"]:checked + .muddy-checkbox-text::before {
-    content: "✔";
-    color: white;
+  input[type="checkbox"]:checked + .muddy-checkbox-text {
+    color: #fff;
     background-color: #409eff;
     border-color: #409eff;
+    box-shadow: 0 0 1px #409eff;
+    border-right: 0.5px solid #dcdfe6;
   }
-  input[type="checkbox"]:checked + .muddy-checkbox-text {
-    color: #409eff;
+  input[type="checkbox"]:checked + .muddy-checkbox-text.last {
+    border-right-color: #409eff;
   }
   input[type="checkbox"]:disabled + .muddy-checkbox-text {
-    color: #c0c4cc;
-  }
-  input[type="checkbox"]:disabled + .muddy-checkbox-text::before {
-    color: white;
-    background: white;
-    border: 1px solid #dcdfe6;
-  }
-  input[type="checkbox"]:disabled:checked + .muddy-checkbox-text::before {
-    color: #efefef;
-    background-color: #c0c4cc;
-    border-color: #c0c4cc;
+    color: #c6c6c6;
+    transition: all 200ms ease;
   }
 }
 </style>

@@ -1,8 +1,18 @@
 import "muddy-rain-sass";
-import Radio from "../packages/radio/radio.js";
-import radioButton from "../packages/radio/radioButton.js";
-import radioGroup from "../packages/radio/radioGroup.js";
-const components = [Radio, radioButton, radioGroup];
+import radio from "./packages/radio/radio.js";
+import radioButton from "./packages/radio/radioButton.js";
+import radioGroup from "./packages/radio/radioGroup.js";
+import checkbox from "./packages/checkbox/checkbox.js";
+import checkboxButton from "./packages/checkbox/checkboxButton.js";
+import checkboxGroup from "./package/checkbox/checkboxGroup.js";
+const components = [
+  radio,
+  radioButton,
+  radioGroup,
+  checkbox,
+  checkboxButton,
+  checkboxGroup,
+];
 
 const install = function(Vue) {
   components.forEach(component => {
@@ -16,7 +26,5 @@ if (typeof window !== "undefined" && window.Vue) {
 export default {
   version: "1.0.0",
   install,
-  Radio,
-  radioButton,
-  radioGroup,
+  ...components,
 };
