@@ -24,13 +24,17 @@
       <muddy-checkbox label="打篮球">打篮球</muddy-checkbox>
     </muddy-checkbox-group>
     <div class="py-2 text-weight">复选框按钮组</div>
-    <muddy-checkbox-group v-model="checkboxButtonList">
+    <muddy-checkbox-group v-model="checkboxButtonList" size="mini">
       <muddy-checkbox-button label="踢足球">踢足球</muddy-checkbox-button>
       <muddy-checkbox-button label="打羽毛球">
         打羽毛球
       </muddy-checkbox-button>
       <muddy-checkbox-button label="打乒乓球">打乒乓球</muddy-checkbox-button>
     </muddy-checkbox-group>
+    <button @click="handleClick('success')">成功</button>
+    <button @click="handleClick('warning')">警告</button>
+    <button @click="handleClick('info')">消息</button>
+    <button @click="handleClick('danger')">错误</button>
   </div>
 </template>
 
@@ -64,6 +68,12 @@ export default {
     };
   },
   methods: {
+    handleClick(type) {
+      this.$message[type]({
+        message: "奥利给____" + type,
+        showClose: true,
+      });
+    },
     handleChange(e) {
       console.log(e);
     },

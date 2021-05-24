@@ -71,7 +71,8 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import "../../../theme/variables.scss";
 .muddy-radio {
   cursor: pointer;
 }
@@ -82,7 +83,7 @@ export default {
 }
 .muddy-radio-text.first {
   border-radius: 4px 0 0 4px;
-  border-left: 1px solid #cccccc;
+  border-left: 1px solid $silver-color;
 }
 .muddy-radio-text.last {
   border-radius: 0 4px 4px 0;
@@ -93,8 +94,8 @@ export default {
   font-size: 1.2rem;
   display: flex;
   align-items: center;
-  background: #fefefe;
-  border: 1px solid #cccccc;
+  background: $light-color;
+  border: 1px solid $silver-color;
   border-left: none;
   display: inline-block;
   padding: 10px 20px;
@@ -114,13 +115,13 @@ export default {
   padding: 7px 15px;
 }
 input[type="radio"]:checked + .muddy-radio-text {
-  color: #fff;
-  background-color: #409eff;
-  border-color: #409eff;
-  box-shadow: -1px 0 0 0 #409eff;
+  color: $white-color;
+  background-color: $primary-color;
+  border-color: $primary-color;
+  box-shadow: -1px 0 0 0 $primary-color;
 }
 input[type="radio"]:disabled + .muddy-radio-text {
-  color: #c6c6c6;
+  color: $disabled-color;
   transition: all 200ms ease;
 }
 </style>

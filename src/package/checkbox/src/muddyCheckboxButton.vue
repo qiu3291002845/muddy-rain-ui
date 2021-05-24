@@ -93,6 +93,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import "../../../theme/variables.scss";
 .muddy-checkbox {
   cursor: pointer;
   .muddy-checkbox-text {
@@ -101,7 +102,7 @@ export default {
   }
   .muddy-checkbox-text.first {
     border-radius: 4px 0 0 4px;
-    border-left: 1px solid #cccccc;
+    border-left: 1px solid $silver-color;
   }
   .muddy-checkbox-text.last {
     border-radius: 0 4px 4px 0;
@@ -111,8 +112,8 @@ export default {
     font-size: 14px;
     display: flex;
     align-items: center;
-    background: #fefefe;
-    border: 1px solid #cccccc;
+    background: $light-color;
+    border: 1px solid $silver-color;
     border-left: none;
     display: inline-block;
     padding: 10px 20px;
@@ -137,17 +138,17 @@ export default {
     opacity: 0;
   }
   input[type="checkbox"]:checked + .muddy-checkbox-text {
-    color: #fff;
-    background-color: #409eff;
-    border-color: #409eff;
-    box-shadow: 0 0 1px #409eff;
-    border-right: 0.5px solid #dcdfe6;
+    color: $white-color;
+    background-color: $primary-color;
+    border-color: $primary-color;
+    box-shadow: 0 0 1px $primary-color;
+    border-right: 0.5px solid $border-color;
   }
   input[type="checkbox"]:checked + .muddy-checkbox-text.last {
-    border-right-color: #409eff;
+    border-right-color: $primary-color;
   }
   input[type="checkbox"]:disabled + .muddy-checkbox-text {
-    color: #c6c6c6;
+    color: $disabled-color;
     transition: all 200ms ease;
   }
 }

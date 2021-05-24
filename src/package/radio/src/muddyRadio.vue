@@ -56,7 +56,8 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import "../../../theme/variables.scss";
 .muddy-radio {
   cursor: pointer;
 }
@@ -75,9 +76,9 @@ export default {
 }
 .muddy-radio-text::before {
   content: "";
-  background: #fefefe;
+  background: $light-color;
   border-radius: 100%;
-  border: 1px solid #cccccc;
+  border: 1px solid $silver-color;
   display: inline-block;
   width: 1.2em;
   height: 1.2em;
@@ -91,23 +92,23 @@ export default {
   transition: all 250ms ease;
 }
 input[type="radio"]:checked + .muddy-radio-text {
-  color: #0075ff;
+  color: $primary-color;
   transition: all 200ms ease;
 }
 input[type="radio"]:disabled + .muddy-radio-text {
-  color: #c6c6c6;
+  color: $disabled-color;
   transition: all 200ms ease;
 }
 input[type="radio"]:checked + .muddy-radio-text::before {
-  background-color: #3197ee;
-  box-shadow: inset 0 0 0 4px #f4f4f4;
+  background-color: $primary-color;
+  box-shadow: inset 0 0 0 4px $light-color;
   opacity: 1;
 }
 input[type="radio"]:checked:disabled + .muddy-radio-text::before {
-  background-color: #cccc;
-  box-shadow: inset 0 0 0 4px #f4f4f4;
+  background-color: $silver-color;
+  box-shadow: inset 0 0 0 4px $light-color;
 }
 input[type="radio"]:disabled + .muddy-radio-text::before {
-  box-shadow: inset 0 0 0 4px #f4f4f4;
+  box-shadow: inset 0 0 0 4px $light-color;
 }
 </style>

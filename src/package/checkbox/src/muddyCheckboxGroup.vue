@@ -11,6 +11,10 @@ export default {
   componentName: "MuddyCheckboxGroup",
   props: {
     value: null,
+    size: {
+      type: String,
+      default: "medium",
+    },
   },
   mounted() {
     this.isButtonComponent = this.findComponent(
