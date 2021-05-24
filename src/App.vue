@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <div class="py-2 text-weight">输入框</div>
+    <muddy-input
+      v-model="inputValue"
+      clearable
+      @input="handleInput"
+      @change="handleChange"
+    ></muddy-input>
     <div class="py-2 text-weight">单选按钮组</div>
     <muddy-radio-group v-model="list">
       <muddy-radio-button :label="1"></muddy-radio-button>
@@ -45,6 +52,7 @@ import muddyCheckboxButton from "./package/checkbox/src/muddyCheckboxButton.vue"
 import muddyRadioButton from "./package/radio/src/muddyRadioButton.vue";
 import muddyRadio from "./package/radio/src/muddyRadio.vue";
 import muddyRadioGroup from "./package/radio/src/muddyRadioGroup.vue";
+import muddyInput from "./package/input/src/muddyInput.vue";
 
 export default {
   name: "App",
@@ -55,6 +63,7 @@ export default {
     muddyRadio,
     muddyCheckboxGroup,
     muddyCheckboxButton,
+    muddyInput,
   },
   data() {
     return {
@@ -65,6 +74,7 @@ export default {
       checkbox1: true,
       checkboxList: ["打乒乓球"],
       checkboxButtonList: [],
+      inputValue: "",
     };
   },
   methods: {
@@ -75,7 +85,10 @@ export default {
       });
     },
     handleChange(e) {
-      console.log(e);
+      console.log("handleChange", e);
+    },
+    handleInput(e) {
+      console.log("handleInput", e);
     },
   },
 };
