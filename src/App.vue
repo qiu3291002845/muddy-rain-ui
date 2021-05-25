@@ -3,10 +3,14 @@
     <div class="py-2 text-weight">输入框</div>
     <muddy-input
       v-model="inputValue"
+      type="password"
       clearable
+      style="width:100px"
       @input="handleInput"
       @change="handleChange"
-    ></muddy-input>
+    />
+    <div class="py-2 text-weight">文本域</div>
+    <muddy-input-textarea v-model="textareaValue" autosize rows="2" />
     <div class="py-2 text-weight">单选按钮组</div>
     <muddy-radio-group v-model="list">
       <muddy-radio-button :label="1"></muddy-radio-button>
@@ -53,6 +57,7 @@ import muddyRadioButton from "./package/radio/src/muddyRadioButton.vue";
 import muddyRadio from "./package/radio/src/muddyRadio.vue";
 import muddyRadioGroup from "./package/radio/src/muddyRadioGroup.vue";
 import muddyInput from "./package/input/src/muddyInput.vue";
+import muddyInputTextarea from "./package/input/src/muddyInputTextarea.vue";
 
 export default {
   name: "App",
@@ -64,6 +69,7 @@ export default {
     muddyCheckboxGroup,
     muddyCheckboxButton,
     muddyInput,
+    muddyInputTextarea,
   },
   data() {
     return {
@@ -75,6 +81,7 @@ export default {
       checkboxList: ["打乒乓球"],
       checkboxButtonList: [],
       inputValue: "",
+      textareaValue: "",
     };
   },
   methods: {

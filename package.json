@@ -11,7 +11,7 @@
     "animate.css": "^4.1.1",
     "core-js": "^3.6.5",
     "file-loader": "^6.2.0",
-    "muddy-rain-sass": "^1.1.0",
+    "muddy-rain-sass": "^1.1.1",
     "node-sass": "^4.14.1",
     "url-loader": "^4.1.1",
     "uuid": "^8.3.2",
