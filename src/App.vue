@@ -8,9 +8,13 @@
       style="width:100px"
       @input="handleInput"
       @change="handleChange"
+      @blur="handleBlur"
+      @focus="handleFocus"
     />
     <div class="py-2 text-weight">文本域</div>
-    <muddy-input-textarea v-model="textareaValue" autosize rows="2" />
+    <muddy-input-textarea v-model="textareaValue" rows="2" />
+    <div class="py-2 text-weight">数字输入框</div>
+    <muddy-input-number :controls="true" v-model="numberValue" />
     <div class="py-2 text-weight">单选按钮组</div>
     <muddy-radio-group v-model="list">
       <muddy-radio-button :label="1"></muddy-radio-button>
@@ -58,6 +62,7 @@ import muddyRadio from "./package/radio/src/muddyRadio.vue";
 import muddyRadioGroup from "./package/radio/src/muddyRadioGroup.vue";
 import muddyInput from "./package/input/src/muddyInput.vue";
 import muddyInputTextarea from "./package/input/src/muddyInputTextarea.vue";
+import muddyInputNumber from "./package/input/src/muddyInputNumber.vue";
 
 export default {
   name: "App",
@@ -70,6 +75,7 @@ export default {
     muddyCheckboxButton,
     muddyInput,
     muddyInputTextarea,
+    muddyInputNumber,
   },
   data() {
     return {
@@ -82,9 +88,16 @@ export default {
       checkboxButtonList: [],
       inputValue: "",
       textareaValue: "",
+      numberValue: "",
     };
   },
   methods: {
+    handleBlur(e) {
+      console.log(e);
+    },
+    handleFocus(e) {
+      console.log(e);
+    },
     handleClick(type) {
       this.$message[type]({
         message: "奥利给____" + type,

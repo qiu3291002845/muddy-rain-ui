@@ -1,10 +1,13 @@
 import "muddy-rain-sass";
-import radio from "./packages/radio/radio.js";
-import radioButton from "./packages/radio/radioButton.js";
-import radioGroup from "./packages/radio/radioGroup.js";
-import checkbox from "./packages/checkbox/checkbox.js";
-import checkboxButton from "./packages/checkbox/checkboxButton.js";
-import checkboxGroup from "./package/checkbox/checkboxGroup.js";
+import radio from "./packages/radio/radio";
+import radioButton from "./packages/radio/radioButton";
+import radioGroup from "./packages/radio/radioGroup";
+import checkbox from "./packages/checkbox/checkbox";
+import checkboxButton from "./packages/checkbox/checkboxButton";
+import checkboxGroup from "./package/checkbox/checkboxGroup";
+import input from "./package/input/input";
+import inputTextarea from "./package/input/inputTextarea";
+import message from "./package/message/message";
 const components = [
   radio,
   radioButton,
@@ -12,9 +15,12 @@ const components = [
   checkbox,
   checkboxButton,
   checkboxGroup,
+  input,
+  inputTextarea,
+  message
 ];
 
-const install = function(Vue) {
+const install = function (Vue) {
   components.forEach(component => {
     Vue.component(component.name, component);
   });

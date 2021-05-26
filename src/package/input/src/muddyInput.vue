@@ -22,6 +22,11 @@
         paddingLeft: startIcon ? '25px' : '15px',
       }"
       class="muddy-input_inner"
+      @keydown="$emit('keydown', $event)"
+      @keyup="$emit('keyup', $event)"
+      @keypress="$emit('keypress', $event)"
+      @blur="$emit('blur', $event)"
+      @focus="$emit('focus', $event)"
     />
     <div
       v-if="startIcon"
@@ -60,6 +65,8 @@
 
 <script>
 export default {
+  name: "MuddyInput",
+  componentName: "MuddyInput",
   props: {
     value: null,
     lazy: Boolean,
@@ -144,7 +151,7 @@ export default {
 <style lang="scss" scoped>
 @import "../../../theme/variables.scss";
 .muddy-input {
-  min-width: 180px !important;
+  width: 180px;
   position: relative;
   &_endIcon {
     position: absolute;

@@ -51,8 +51,8 @@ function getUuid() {
   return "alert_" + sort++;
 }
 export default {
-  name: "MuddyAlert",
-  componentName: "MuddyAlert",
+  name: "MuddyMessage",
+  componentName: "MuddyMessage",
   data() {
     return {
       notices: [],

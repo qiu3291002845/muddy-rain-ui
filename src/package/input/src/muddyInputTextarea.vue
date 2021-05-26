@@ -5,13 +5,19 @@
       class="muddy-input_textarea_input"
       :rows="rows"
       :style="{ resize }"
-      @input="handleChange"
-    ></textarea>
+      @keydown="$emit('keydown', $event)"
+      @keyup="$emit('keyup', $event)"
+      @keypress="$emit('keypress', $event)"
+      @blur="$emit('blur', $event)"
+      @focus="$emit('focus', $event)"
+    />
   </div>
 </template>
 
 <script>
 export default {
+  name: "MuddyInputTextarea",
+  componentName: "MuddyInputTextarea",
   props: {
     value: null,
     rows: {
@@ -36,17 +42,11 @@ export default {
       },
       set(val) {
         this.$emit("input", val);
+        this.$emit("change", val);
       },
     },
   },
-  methods: {
-    handleChange() {
-      this.$nextTick(() => {
-        const list = this.innerVal.split("\n");
-        this.valLength = list.length;
-      });
-    },
-  },
+  methods: {},
 };
 </script>
 
