@@ -153,8 +153,8 @@ export default {
     z-index: 1;
     top: 1px;
     width: 40px;
-    line-height: 37px;
-    height: 37px;
+    line-height: 38px;
+    height: 38px;
     text-align: center;
     background: #f5f7fa;
     color: #606266;
@@ -190,8 +190,8 @@ export default {
     top: 1px;
     left: 1px;
     width: 40px;
-    line-height: 37px;
-    height: 37px;
+    line-height: 38px;
+    height: 38px;
     text-align: center;
     background: #f5f7fa;
     color: #606266;

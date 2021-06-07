@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="py-2 text-weight">选择器</div>
-    <muddy-select></muddy-select>
+    <muddy-select v-model="selectValue" clearable :options="selectOptions" />
     <div class="py-2 text-weight">图片</div>
     <muddy-image src="./assets/1.png" :width="300" :height="200"></muddy-image>
     <muddy-image
@@ -73,7 +73,7 @@ import muddyInput from "./package/input/src/muddyInput.vue";
 import muddyInputTextarea from "./package/input/src/muddyInputTextarea.vue";
 import muddyInputNumber from "./package/input/src/muddyInputNumber.vue";
 import muddyImage from "./package/image/src/muddyImage.vue";
-import muddySelect from "./package/select/src/muddy-Select.vue";
+import muddySelect from "./package/select/src/muddy_select.vue";
 
 export default {
   name: "App",
@@ -95,10 +95,26 @@ export default {
       sex: "2",
       list: "",
       size: "mini",
+      selectValue: "",
       checkbox: false,
       checkbox1: true,
       checkboxList: ["打乒乓球"],
       checkboxButtonList: [],
+      selectOptions: [
+        {
+          value: 1,
+          label: "小鱼",
+          disabled: true,
+        },
+        {
+          value: 2,
+          label: "小猫",
+        },
+        {
+          value: 3,
+          label: "小狗",
+        },
+      ],
       inputValue: "",
       textareaValue: "",
       numberValue: "",
