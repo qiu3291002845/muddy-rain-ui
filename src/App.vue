@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <div class="py-2 text-weight">选择器</div>
+    <muddy-select></muddy-select>
     <div class="py-2 text-weight">图片</div>
     <muddy-image src="./assets/1.png" :width="300" :height="200"></muddy-image>
     <muddy-image
@@ -71,10 +73,12 @@ import muddyInput from "./package/input/src/muddyInput.vue";
 import muddyInputTextarea from "./package/input/src/muddyInputTextarea.vue";
 import muddyInputNumber from "./package/input/src/muddyInputNumber.vue";
 import muddyImage from "./package/image/src/muddyImage.vue";
+import muddySelect from "./package/select/src/muddy-Select.vue";
 
 export default {
   name: "App",
   components: {
+    muddySelect,
     muddyCheckbox,
     muddyRadioButton,
     muddyRadioGroup,

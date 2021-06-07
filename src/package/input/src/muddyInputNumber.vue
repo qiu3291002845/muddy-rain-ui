@@ -97,8 +97,8 @@ export default {
       this.$emit("input", Number(this.queryValue));
     },
     handleInput(event) {
-      let num = event.target.value.replace(/[^\d.]/g, "");
-      num === "." && (num = "");
+      this.queryValue = event.target.value.replace(/[^\d.]/g, "");
+      this.queryValue === "." && (this.queryValue = "");
       const float = String(event.target.value).split(".")[1];
       const step = String(this.step).split(".")[1];
       this.float = float
@@ -106,7 +106,12 @@ export default {
         : step
         ? String(step).length
         : 0;
-      this.$emit("input", parseFloat(float) > 0 ? Number(num) : parseInt(num));
+      this.$emit(
+        "input",
+        parseFloat(float) > 0
+          ? Number(this.queryValue)
+          : parseInt(this.queryValue)
+      );
     },
     handleBlur(e) {
       if (this.queryValue > this.max && this.controls) {
@@ -119,9 +124,9 @@ export default {
         this.$emit("input", Number(this.queryValue));
         return;
       }
-      e.target.value = e.target.value.replace(/[^\d.]/g, "");
-      e.target.value === "." && (e.target.value = "");
-      const float = String(e.target.value).split(".")[1];
+      let num = e.target.value.replace(/[^\d.]/g, "");
+      num === "." && (e.target.value = "");
+      const float = String(num).split(".")[1];
       const step = String(this.step).split(".")[1];
       this.float = float
         ? parseFloat(float) > 0
@@ -130,10 +135,8 @@ export default {
         : step
         ? String(step).length
         : 0;
-      this.queryValue =
-        parseFloat(float) > 0
-          ? Number(e.target.value)
-          : parseInt(e.target.value);
+      console.log(num);
+      this.queryValue = parseFloat(float) > 0 ? Number(num) : parseInt(num);
       this.$emit("blur", Number(e));
     },
   },
