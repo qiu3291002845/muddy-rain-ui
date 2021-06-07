@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <div class="py-2 text-weight">图片</div>
+    <muddy-image src="./assets/1.png" :width="300" :height="200"></muddy-image>
+    <muddy-image
+      src="https://pic2.zhimg.com/v2-0eae52fe477d00aac28b87e38b1e2545_720w.jpg"
+    ></muddy-image>
+    <img src="./assets/1.png" />
     <div class="py-2 text-weight">输入框</div>
     <muddy-input
       v-model="inputValue"
@@ -63,6 +69,7 @@ import muddyRadioGroup from "./package/radio/src/muddyRadioGroup.vue";
 import muddyInput from "./package/input/src/muddyInput.vue";
 import muddyInputTextarea from "./package/input/src/muddyInputTextarea.vue";
 import muddyInputNumber from "./package/input/src/muddyInputNumber.vue";
+import muddyImage from "./package/image/src/muddyImage.vue";
 
 export default {
   name: "App",
@@ -76,6 +83,7 @@ export default {
     muddyInput,
     muddyInputTextarea,
     muddyInputNumber,
+    muddyImage,
   },
   data() {
     return {
