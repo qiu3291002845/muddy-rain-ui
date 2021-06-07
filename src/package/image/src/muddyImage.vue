@@ -1,7 +1,14 @@
 <template>
   <div class="muddy-image" :style="style" @click="openBig">
-    <img :src="src" :alt="alt" ref="imgRef" :style="{ 'object-fit': mode }" />
+    <img
+      :src="src"
+      :alt="alt"
+      ref="imgRef"
+      :class="{ 'muddy-image_hand': preview }"
+      :style="{ 'object-fit': mode }"
+    />
     <div
+      v-if="preview"
       class="muddy-image_zoom_in_bg"
       ref="zoomBgRef"
       v-show="isBig"
@@ -33,6 +40,7 @@ export default {
       default: "",
     },
     alt: String,
+    preview: Boolean,
     mode: {
       type: String,
       default: "fill",
@@ -128,9 +136,8 @@ export default {
       }, 300);
     },
     openBig() {
-      if (this.isBig) {
-        return;
-      }
+      if (!this.preview) return;
+      if (this.isBig) return;
       this.isBig = true;
       this.actionCenter();
       this.actionBig();
@@ -170,7 +177,9 @@ export default {
   img {
     width: 100%;
     height: 100%;
-    cursor: pointer;
+    &.muddy-image_hand {
+      cursor: pointer;
+    }
   }
   &_action__box {
     position: absolute;

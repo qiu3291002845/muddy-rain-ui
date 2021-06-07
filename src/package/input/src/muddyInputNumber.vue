@@ -150,13 +150,13 @@ export default {
     z-index: 1;
     top: 1px;
     width: 40px;
-    height: 38px;
+    line-height: 37px;
+    height: 37px;
     text-align: center;
     background: #f5f7fa;
     color: #606266;
     cursor: pointer;
     font-size: 13px;
-    line-height: 38px;
     right: 1px;
     border-radius: 0 4px 4px 0;
     border-left: 1px solid #dcdfe6;
@@ -186,9 +186,9 @@ export default {
     z-index: 1;
     top: 1px;
     left: 1px;
-    line-height: 38px;
     width: 40px;
-    height: 38px;
+    line-height: 37px;
+    height: 37px;
     text-align: center;
     background: #f5f7fa;
     color: #606266;

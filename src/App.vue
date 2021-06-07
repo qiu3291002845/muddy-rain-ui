@@ -3,6 +3,7 @@
     <div class="py-2 text-weight">图片</div>
     <muddy-image src="./assets/1.png" :width="300" :height="200"></muddy-image>
     <muddy-image
+      preview
       src="https://pic2.zhimg.com/v2-0eae52fe477d00aac28b87e38b1e2545_720w.jpg"
     ></muddy-image>
     <img src="./assets/1.png" />
