@@ -13,16 +13,20 @@
       ref="zoomBgRef"
       v-show="isBig"
       @click="cancelBig"
+      @mousewheel.prevent="mouseWheel"
     >
       <img
         :src="src"
+        draggable="false"
         :style="{ ...style, 'object-fit': mode }"
         ref="bigImgRef"
+        @mousedown="startDrag"
+        @click.stop=""
         alt=""
       />
       <div class="muddy-image_action__box" ref="actionRef" @click.stop="">
-        <div class="muddyIcon icon-zoom-in" @click.stop="zoomIn"></div>
-        <div class="muddyIcon icon-zoom-out" @click.stop="zoomOut"></div>
+        <div class="muddyIcon icon-zoom-in" @click.stop="zoomIn(0.2)"></div>
+        <div class="muddyIcon icon-zoom-out" @click.stop="zoomOut(0.2)"></div>
         <div class="muddyIcon icon-refresh" @click.stop="reverseRotation"></div>
         <div class="muddyIcon icon-refresh" @click.stop="forwardRotation"></div>
       </div>
@@ -66,6 +70,11 @@ export default {
       eleH: null,
       scale: 1,
       rotate: 0,
+      x0: 0,
+      y0: 0,
+      x1: 0,
+      y1: 0,
+      canDrag: false,
     };
   },
   computed: {
@@ -86,22 +95,54 @@ export default {
     });
   },
   methods: {
-    zoomIn() {
+    mouseWheel(e) {
+      let direction = e.deltaY > 0 ? "down" : "up";
+      if (direction === "up") {
+        this.zoomOut(0.1);
+      }
+      if (direction === "down") {
+        this.zoomIn(0.1);
+      }
+    },
+    startDrag(e) {
+      e.preventDefault();
+      // 获取元素
+      let imgWrap = this.$refs["bigImgRef"];
+      imgWrap.style.transition = "transform 150ms ease-in-out";
+      let x = e.pageX - imgWrap.offsetLeft;
+      let y = e.pageY - imgWrap.offsetTop;
+      // 添加鼠标移动事件
+      imgWrap.addEventListener("mousemove", move);
+      function move(e) {
+        imgWrap.style.left = e.pageX - x + "px";
+        imgWrap.style.top = e.pageY - y + "px";
+      }
+      // 添加鼠标抬起事件，鼠标抬起，将事件移除
+      imgWrap.addEventListener("mouseup", () => {
+        imgWrap.removeEventListener("mousemove", move);
+      });
+      // 鼠标离开父级元素，把事件移除
+      imgWrap.addEventListener("mouseout", () => {
+        imgWrap.removeEventListener("mousemove", move);
+        imgWrap.style.transition = "all 300ms ease-in-out";
+      });
+    },
+    zoomIn(zoom) {
       const transform = String(this.$refs.bigImgRef.style.transform).split(" ");
       this.scale = parseFloat(transform[0].slice(6, 9));
       this.rotate = parseInt(transform[1].slice(7));
-      this.scale -= 0.2;
-      if (this.scale <= 0.4) {
+      this.scale -= zoom;
+      if (this.scale <= 0.2) {
         return;
       }
       this.$refs.bigImgRef.style.transform = `scale(${this.scale}) rotate(${this.rotate}deg)`;
     },
-    zoomOut() {
+    zoomOut(zoom) {
       const transform = String(this.$refs.bigImgRef.style.transform).split(" ");
       this.scale = parseFloat(transform[0].slice(6, 9));
       this.rotate = parseInt(transform[1].slice(7));
-      this.scale += 0.2;
-      if (this.scale > 4) {
+      this.scale += zoom;
+      if (this.scale > 6) {
         return;
       }
       this.$refs.bigImgRef.style.transform = `scale(${this.scale}) rotate(${this.rotate}deg)`;
@@ -150,6 +191,7 @@ export default {
     actionCenter() {
       const imgLeft = this.$refs.imgRef.getBoundingClientRect().left;
       const imgTop = this.$refs.imgRef.getBoundingClientRect().top;
+      this.$refs.bigImgRef.style.transition = "all 300ms ease-in-out";
       this.$refs.bigImgRef.style.top = imgTop + "px";
       this.$refs.bigImgRef.style.left = imgLeft + "px";
       const width =
@@ -216,7 +258,7 @@ export default {
       left: 0;
       top: 0;
       position: absolute;
-      transition: all 300ms ease-in-out;
+      transition: transform 150ms ease-in-out;
     }
     position: fixed;
     left: 0;
