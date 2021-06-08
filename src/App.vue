@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="container_app">
     <div class="py-2 text-weight">选择器</div>
     <muddy-select v-model="selectValue" clearable :options="selectOptions" />
     <div class="py-2 text-weight">图片</div>
@@ -59,6 +59,14 @@
     <button @click="handleClick('warning')">警告</button>
     <button @click="handleClick('info')">消息</button>
     <button @click="handleClick('danger')">错误</button>
+    <div class="py-2 text-weight">瀑布流</div>
+    <!-- @scroll="handleScroll" -->
+    <muddy-waterfall
+      :list="waterList"
+      @scroll="handleScroll"
+      imgType="1"
+      imgWidth="200"
+    />
   </div>
 </template>
 
@@ -74,10 +82,12 @@ import muddyInputTextarea from "./package/input/src/muddyInputTextarea.vue";
 import muddyInputNumber from "./package/input/src/muddyInputNumber.vue";
 import muddyImage from "./package/image/src/muddyImage.vue";
 import muddySelect from "./package/select/src/muddy_select.vue";
+import muddyWaterfall from "./package/waterfall/src/muddy_waterfall.vue";
 
 export default {
   name: "App",
   components: {
+    muddyWaterfall,
     muddySelect,
     muddyCheckbox,
     muddyRadioButton,
@@ -100,6 +110,11 @@ export default {
       checkbox1: true,
       checkboxList: ["打乒乓球"],
       checkboxButtonList: [],
+      waterList: [
+        {
+          url: "./assets/1.jpg",
+        },
+      ],
       selectOptions: [
         {
           value: 1,
@@ -121,6 +136,27 @@ export default {
     };
   },
   methods: {
+    handleScroll(e) {
+      const list = [
+        {
+          url: "./assets/1.jpg",
+        },
+        {
+          url: "./assets/2.jpg",
+        },
+        {
+          url: "./assets/3.jpg",
+        },
+        {
+          url: "./assets/4.jpg",
+        },
+      ];
+      if (e) {
+        for (const item of list) {
+          this.waterList.push(item);
+        }
+      }
+    },
     handleBlur(e) {
       console.log(e);
     },
@@ -144,8 +180,9 @@ export default {
 </script>
 
 <style>
-#app {
-  width: 50%;
+#container_app {
+  width: 65%;
+  height: auto;
   margin: 5vh auto;
 }
 .hand {

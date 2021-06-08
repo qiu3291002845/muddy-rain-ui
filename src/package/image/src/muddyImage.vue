@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { isNumber } from "../../../utils/validate";
 export default {
   name: "muddyImage",
   componentName: "muddyImage",
@@ -81,17 +82,16 @@ export default {
     style() {
       return {
         width: this.width + "px",
-        height: this.height + "px",
+        height: isNumber(this.height) ? this.height + "px" : this.height,
       };
     },
   },
   mounted() {
     this.$nextTick(() => {
-      window.onresize = () => {
-        this.actionCenter();
-      };
-      this.eleW = this.$refs.imgRef.offsetWidth;
-      this.eleH = this.$refs.imgRef.offsetHeight;
+      setTimeout(() => {
+        this.eleW = this.$refs.imgRef && this.$refs.imgRef.offsetWidth;
+        this.eleH = this.$refs.imgRef && this.$refs.imgRef.offsetHeight;
+      }, 500);
     });
   },
   methods: {
@@ -165,7 +165,7 @@ export default {
       const imgLeft = this.$refs.imgRef.getBoundingClientRect().left;
       const imgTop = this.$refs.imgRef.getBoundingClientRect().top;
       setTimeout(() => {
-        this.$refs.bigImgRef.style.transform = "scale(1)";
+        this.$refs.bigImgRef.style.transform = "scale(1) rotate(0deg)";
         this.$refs.bigImgRef.style.top = imgTop + "px";
         this.$refs.bigImgRef.style.left = imgLeft + "px";
         this.$refs.actionRef.style.opacity = 0;
